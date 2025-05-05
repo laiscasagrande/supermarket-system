@@ -48,11 +48,5 @@ Este sistema foi desenvolvido como parte de uma atividade acadêmica e é voltad
 - **JavaScript** – Lógica de interação e funcionalidades
 - **React.js** – Para um frontend mais dinâmico
 
----
 
-📌 *Este sistema não utiliza banco de dados real ou autenticação verdadeira. Todos os dados são armazenados apenas em memória/localStorage como simulação para fins educacionais.*
-
----
-
-🔗 **[Link para o projeto online (se aplicável)]**
 
