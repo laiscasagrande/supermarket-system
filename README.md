@@ -1,9 +1,10 @@
-#  SuperMarket-System - Sistema de Supermercado - Área do Cliente
+##  SuperMarket-System - Sistema de Supermercado - Área do Cliente
 
-#Desenvolvedores
+## Desenvolvedores
 - Laís Kaminski Casagrande
 - Thalysson Marcelino dos Santos
 - Vinícius dos Santos Nascimento
+- Miguel Arcanjo Moreira Victoria
 
 ##  Descrição do Projeto
 
