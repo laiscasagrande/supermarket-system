@@ -8,7 +8,7 @@
 
 ##  Descrição do Projeto
 
-Este projeto simula um sistema de supermercado com foco na experiência do cliente. Ele permite que o usuário visualize produtos disponíveis para compra, adicione itens ao carrinho, acompanhe seu histórico de compras por meio de uma interface interativa e acessível. Além disso, o sistema oferece um dashboard com o historico de compras e recomendações personalizadas.
+Este projeto simula um sistema de supermercado com foco na experiência do cliente. Ele permite que o usuário realize seu login, cadastre produtos, visualize os produtos disponíveis para compra e adicione itens ao carrinho por meio de uma interface interativa e acessível. Além disso, o sistema oferece um dashboard com recomendações personalizadas e promoções.
 
 ---
 
@@ -18,7 +18,7 @@ O objetivo é desenvolver um sistema funcional que simule a jornada de um client
 
 - Praticar o desenvolvimento de CRUDs;
 - Simular a experiência de compras online;
-- Trabalhar com gerenciamento de estados (como carrinho e histórico);
+- Trabalhar com gerenciamento de estados (como o carrinho de compras);
 - Explorar o design de interfaces intuitivas.
 
 ---
@@ -28,10 +28,9 @@ O objetivo é desenvolver um sistema funcional que simule a jornada de um client
 O projeto está organizado nas seguintes telas:
 
 - **Tela de Login**: Acesso simulado ao sistema com formulário de registro.
-- **Dashboard Inicial**: Mostra promoções, produtos com preço reduzido e sugestões.
-- **Página de Produtos**: Exibe todos os produtos disponíveis com botão para adicionar ao carrinho.
+- **Cadastro de produto**: Tela dedicada ao cadastro de produto.
+- **Dashboard Inicial**: Exibe todos os produtos disponíveis com botão para adicionar ao carrinho.
 - **Carrinho de Compras**: Permite revisão e finalização das compras.
-- **Histórico de Compras**: Mostra todas as compras realizadas anteriormente.
 
 ---
 
@@ -50,7 +49,7 @@ O SuperMarket-System será dsenvolvido para as pessoas que não gostam de ir ao 
 
 ##  Diferenciais/Características do SuperMarket-System
 
-A ideia do SuperMarket-System é desenvolver um sistema que coloca em prática os conceitos abordados na disciplina de frontend. Além de ser um projeto para a aprendizagem, ele é semelhante a outros sistemas frequentemente utilizados por usuarios comuns no dia a dia, pois o intuito dele é a realização de compras online. Para um sistema de supermercado online, é essencial a presença de cruds, como a visualização de mercadorias, a adição de produtos no carrinho, a remoção de produtos do carrinho, além de conter informaçõs úteis para o usuário, como acompanhar seu histórico de compras e a visualização de promoções e descrição do produto. Tudo isso deve estar em uma interface dinâmica e intuitiva, de forma a atrair a atenção do usuário e ele ter uma boa experiêcia.
+A ideia do SuperMarket-System é desenvolver um sistema que coloca em prática os conceitos abordados na disciplina de frontend. Além de ser um projeto para a aprendizagem, ele é semelhante a outros sistemas frequentemente utilizados por usuarios comuns no dia a dia, pois o intuito dele é a realização de compras online. Para um sistema de supermercado online, é essencial a presença de cruds, como a visualização de mercadorias, a adição de produtos no carrinho, a remoção de produtos do carrinho, além de conter informaçõs úteis para o usuário, como a visualização de promoções e descrição do produto. Tudo isso deve estar em uma interface dinâmica e intuitiva, de forma a atrair a atenção do usuário e ele ter uma boa experiêcia.
 
 
 
