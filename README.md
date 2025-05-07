@@ -8,13 +8,13 @@
 
 ##  Descrição do Projeto
 
-Este projeto simula um sistema de supermercado com foco na experiência do cliente. Ele permite que o usuário realize seu login, cadastre produtos, visualize os produtos disponíveis para compra e adicione itens ao carrinho por meio de uma interface interativa e acessível. Além disso, o sistema oferece um dashboard com recomendações personalizadas e promoções.
+Este projeto simula um sistema de supermercado com foco na experiência do cliente. Ele permite que o usuário realize seu login, visualize os produtos disponíveis para compra e adicione itens ao carrinho por meio de uma interface interativa e acessível.
 
 ---
 
 ##  Objetivo do Projeto
 
-O objetivo é desenvolver um sistema funcional que simule a jornada de um cliente em um supermercado digital, integrando conceitos fundamentais como autenticação (fake login), interface de navegação, e funcionalidades de CRUD. O sistema foca em:
+O objetivo é desenvolver um sistema funcional que simule a jornada de um cliente em um supermercado digital, integrando conceitos fundamentais como autenticação, interface de navegação, e funcionalidades de CRUD. O sistema foca em:
 
 - Praticar o desenvolvimento de CRUDs;
 - Simular a experiência de compras online;
@@ -36,7 +36,7 @@ O projeto está organizado nas seguintes telas:
 
 ##  Público-Alvo
 
-O SuperMarket-System será dsenvolvido para as pessoas que não gostam de ir ao supermercado físico e que preferem fazer suas compras mensais de forma virtual e de maneira simples. Além da preferência por compras online, como o sistem ofere uma interface simples e acessível, com informações relevantes para o usuário, ele optará em utilizar o SuperMarket-System por questões de qualidade.
+O SuperMarket-System será desenvolvido para as pessoas que não gostam de ir ao supermercado físico e que preferem fazer suas compras mensais de forma virtual e de maneira simples. Além da preferência por compras online, como o sistem ofere uma interface simples e acessível, com informações relevantes para o usuário, ele optará em utilizar o SuperMarket-System por questões de qualidade.
 
 ---
 
