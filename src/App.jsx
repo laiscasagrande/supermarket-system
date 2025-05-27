@@ -1,11 +1,9 @@
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 
-import RootLayout from "./layouts/RootLayout";
-import Login from "./Page/Login/Login";
+import RootLayout from "./Layouts/Root";
+import Login from "./Pages/Login/Login";
 
 const router = createBrowserRouter([
   {
