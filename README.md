@@ -51,5 +51,7 @@ O SuperMarket-System será desenvolvido para as pessoas que não gostam de ir ao
 
 A ideia do SuperMarket-System é desenvolver um sistema que coloca em prática os conceitos abordados na disciplina de frontend. Além de ser um projeto para a aprendizagem, ele é semelhante a outros sistemas frequentemente utilizados por usuarios comuns no dia a dia, pois o intuito dele é a realização de compras online. Para um sistema de supermercado online, é essencial a presença de cruds, como a visualização de mercadorias, a adição de produtos no carrinho, a remoção de produtos do carrinho, além de conter informaçõs úteis para o usuário, como a visualização de promoções e descrição do produto. Tudo isso deve estar em uma interface dinâmica e intuitiva, de forma a atrair a atenção do usuário e ele ter uma boa experiêcia.
 
+.
+
 
 
