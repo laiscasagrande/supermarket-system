@@ -1,17 +1,12 @@
 import React from "react";
 import "./Login.css";
 
-interface LoginProps {
-  onLogin?: (email: string, senha: string) => void;
-}
-
-const Login: React.FC<LoginProps> = ({ onLogin }) => {
+const Login = () => {
   const [email, setEmail] = React.useState("");
   const [senha, setSenha] = React.useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = () => {
     e.preventDefault();
-    if (onLogin) onLogin(email, senha);
   };
 
   return (
