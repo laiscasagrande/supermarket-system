@@ -1,0 +1,78 @@
+
+
+
+function App() {
+  const [nomeProduto, setNomeProduto] = useState('');
+  const [descricaoProduto, setDescricaoProduto] = useState('');
+  const [precoProduto, setPrecoProduto] = useState('');
+  const [quantidadeEstoque, setQuantidadeEstoque] = useState('');
+
+  function aoEnviarFormulario(evento) {
+    evento.preventDefault();
+    const produto = {
+      nome: nomeProduto,
+      descricao: descricaoProduto,
+      preco: precoProduto,
+      estoque: quantidadeEstoque
+    };
+
+    alert('Produto cadastrado com sucesso!');
+    console.log('Produto cadastrado:', produto);
+
+   
+    setNomeProduto('');
+    setDescricaoProduto('');
+    setPrecoProduto('');
+    setQuantidadeEstoque('');
+  }
+
+  return (
+    <div className="container">
+      <h1>Cadastro de Produto</h1>
+      <form onSubmit={aoEnviarFormulario}>
+        <label>
+          Nome:
+          <input
+            type="text"
+            value={nomeProduto}
+            onChange={(e) => setNomeProduto(e.target.value)}
+            required
+          />
+        </label>
+
+        <label>
+          Descrição:
+          <textarea
+            value={descricaoProduto}
+            onChange={(e) => setDescricaoProduto(e.target.value)}
+            required
+          />
+        </label>
+
+        <label>
+          Preço:
+          <input
+            type="number"
+            value={precoProduto}
+            onChange={(e) => setPrecoProduto(e.target.value)}
+            required
+          />
+        </label>
+
+        <label>
+          Quantidade em Estoque:
+          <input
+            type="number"
+            value={quantidadeEstoque}
+            onChange={(e) => setQuantidadeEstoque(e.target.value)}
+            required
+          />
+        </label>
+
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+  );
+}
+
+export default App;
