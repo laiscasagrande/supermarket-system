@@ -13,6 +13,7 @@ const Login = () => {
     <div className="login-container">
       <div className="login-box">
         <h2 className="login-title">SuperMarket-System</h2>
+        <h1 className="text-red-500">Hello World</h1>
         <p className="login-subtitle">Faça login para continuar</p>
 
         <form onSubmit={handleSubmit}>
