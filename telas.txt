@@ -1,0 +1,10 @@
+TELAS:
+----> LOGIN --> DASHBOARD
+
+
+----> CADASTRO DE PRODUTO () 
+----> DASHBOARD INICIAL () --> CADASTRO DE PRODUTO () 
+
+
+
+----> CARRINHO ()
