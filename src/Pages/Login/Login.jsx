@@ -1,19 +1,49 @@
 import React from "react";
+import { supabase } from '../../supabase-client';
+import { useNavigate } from 'react-router-dom';
 import "./Login.css";
 
-const Login = () => {
+const Login = ({ setToken }) => {
   const [email, setEmail] = React.useState("");
   const [senha, setSenha] = React.useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  React.useEffect(() => {
+    // Se já está logado, redireciona para home
+    const checkLogged = async () => {
+      const { data: userData } = await supabase.auth.getUser();
+      if (userData?.user) navigate('/home');
+    };
+    checkLogged();
+  }, [navigate]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password: senha,
+      });
+      if (error) {
+        alert(error.message);
+        return;
+      } else {
+        if (setToken) setToken(data);
+        navigate('/home');
+      }
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const handleRegister = () => {
+    navigate('/signup');
   };
 
   return (
     <div className="login-container">
       <div className="login-box">
         <h2 className="login-title">SuperMarket-System</h2>
-        <h1 className="text-red-500">Hello World</h1>
         <p className="login-subtitle">Faça login para continuar</p>
 
         <form onSubmit={handleSubmit}>
@@ -46,7 +76,9 @@ const Login = () => {
           <div className="divider-line"></div>
         </div>
 
-        <button className="register-button">Registrar-se</button>
+        <button className="register-button" onClick={handleRegister}>
+          Registrar-se
+        </button>
       </div>
     </div>
   );
