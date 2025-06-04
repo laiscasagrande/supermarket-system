@@ -1,17 +1,38 @@
+import React, { useEffect } from 'react'
+import { Routes, Route } from "react-router-dom";
+import SignUp from './Pages/SignUp/SignUp';
+import Xogin from './Pages/Login/Xogin';
+import Xome from './Pages/Home/Home';
+import Cart from './Pages/Cart/Cart';
+import CreateItem from './Pages/CreateItem/CreateItem';
+import Login from './Pages/Login/Login';
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./App.css";
+const App = () => {
 
-import RootLayout from "./Layouts/Root";
-import Login from "./Pages/Login/Login";
+  const [ token, setToken ] = React.useState(false);
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    // element: <RootLayout />,
-    children: [{ path: "/", element: <Login /> }],
-  },
-]);
-export default function App() {
-  return <RouterProvider router={router} />;
+  if(token) {
+    sessionStorage.setItem('token', JSON.stringify(token));
+  }
+
+  useEffect(() => {
+    if(sessionStorage.getItem('token')) {
+      let data = JSON.parse(sessionStorage.getItem('token'));
+      setToken(data);
+    }
+  }, []);
+
+  return (
+    <div>
+      <Routes>
+        <Route path={'/'} element={ <Login setToken={setToken} /> } />
+        <Route path={'/signup'} element={ <SignUp/> } />
+        {token? <Route path={'/home'} element={ <Home token={token} /> } /> : '' }
+        <Route path={'/cart'} element={ <Cart/> } />
+        <Route path={'/createitem'} element={ < CreateItem /> } />
+      </Routes>
+    </div>
+  )
 }
+
+export default App

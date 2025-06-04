@@ -1,12 +1,43 @@
 import React from "react";
+import { supabase } from '../../supabase-client';
+import { useNavigate } from 'react-router-dom';
 import "./Login.css";
 
-const Login = () => {
+const Login = ({ setToken }) => {
   const [email, setEmail] = React.useState("");
   const [senha, setSenha] = React.useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  React.useEffect(() => {
+    // Se já está logado, redireciona para home
+    const checkLogged = async () => {
+      const { data: userData } = await supabase.auth.getUser();
+      if (userData?.user) navigate('/home');
+    };
+    checkLogged();
+  }, [navigate]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password: senha,
+      });
+      if (error) {
+        alert(error.message);
+        return;
+      } else {
+        if (setToken) setToken(data);
+        navigate('/home');
+      }
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const handleRegister = () => {
+    navigate('/signup');
   };
 
   return (
