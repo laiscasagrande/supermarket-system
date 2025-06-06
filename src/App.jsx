@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react'
 import { Routes, Route } from "react-router-dom";
 import SignUp from './Pages/SignUp/SignUp';
-import Xogin from './Pages/Login/Xogin';
-import Xome from './Pages/Home/Home';
 import Cart from './Pages/Cart/Cart';
 import CreateItem from './Pages/CreateItem/CreateItem';
 import Login from './Pages/Login/Login';
+import Home from './Pages/Home/Home';
 
 const App = () => {
 
@@ -27,7 +26,7 @@ const App = () => {
       <Routes>
         <Route path={'/'} element={ <Login setToken={setToken} /> } />
         <Route path={'/signup'} element={ <SignUp/> } />
-        {token? <Route path={'/home'} element={ <Home token={token} /> } /> : '' }
+        {token? <Route path={'/home'} element={ <Home token={token} /> } /> : <SignUp/> }
         <Route path={'/cart'} element={ <Cart/> } />
         <Route path={'/createitem'} element={ < CreateItem /> } />
       </Routes>

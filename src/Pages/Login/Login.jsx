@@ -1,7 +1,7 @@
 import React from "react";
 import { supabase } from '../../supabase-client';
 import { useNavigate } from 'react-router-dom';
-import "./Login.css";
+// import "./Login.css";
 
 const Login = ({ setToken }) => {
   const [email, setEmail] = React.useState("");
@@ -9,7 +9,6 @@ const Login = ({ setToken }) => {
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    // Se já está logado, redireciona para home
     const checkLogged = async () => {
       const { data: userData } = await supabase.auth.getUser();
       if (userData?.user) navigate('/home');
@@ -112,6 +111,7 @@ const Login = ({ setToken }) => {
 
         <button 
         className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        onClick={handleRegister}
         >
           Registrar-se</button>
       </div>
