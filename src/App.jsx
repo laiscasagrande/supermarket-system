@@ -26,7 +26,7 @@ const App = () => {
       <Routes>
         <Route path={'/'} element={ <Login setToken={setToken} /> } />
         <Route path={'/signup'} element={ <SignUp/> } />
-        {token? <Route path={'/home'} element={ <Home token={token} /> } /> : <SignUp/> }
+        <Route path={'/home'} element={ <Home token={token} /> } />
         <Route path={'/cart'} element={ <Cart/> } />
         <Route path={'/createitem'} element={ < CreateItem /> } />
       </Routes>
