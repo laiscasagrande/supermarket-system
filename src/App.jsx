@@ -26,10 +26,7 @@ const App = () => {
       <Routes>
         <Route path={'/'} element={ <Login setToken={setToken} /> } />
         <Route path={'/signup'} element={ <SignUp/> } />
-        <Route
-          path={'/home'}
-          element={token ? <Home token={token} /> : <SignUp />}
-        />
+        <Route path={'/home'} element={ <Home token={token} /> } />   
         <Route path={'/cart'} element={ <Cart/> } />
         <Route path={'/createitem'} element={ <CreateItem /> } />
       </Routes>
