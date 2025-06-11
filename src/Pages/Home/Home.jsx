@@ -77,8 +77,8 @@ const Home = () => {
   }
 
   return (
-    <div>
-      <div>
+    <div className="min-h-screen bg-gray-100">
+      <div className="flex justify-between items-center p-4 bg-white shadow">
         {userId ? (
           <>
             Bem vindo de volta, <b>{userName}</b>
@@ -87,25 +87,47 @@ const Home = () => {
             <button onClick={navigateToRegisterProduct}>Cadastro de produto</button>
           </>
         ) : (
-          <>
-            <button onClick={() => navigate('/')}>Login</button>
-            <button onClick={() => navigate('/signup')}>Cadastro</button>
-          </>
+          <div className="flex gap-2">
+            <button
+              onClick={() => navigate('/')}
+              className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition"
+            >
+              Login
+            </button>
+            <button
+              onClick={() => navigate('/signup')}
+              className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition"
+            >
+              Cadastro
+            </button>
+          </div>
         )}
       </div>
-      <h2>Produtos</h2>
-      <ul>
-        {products.map(prod => (
-          <li key={prod.id}>
-            <img src={prod.image_url} alt={prod.name} style={{width: 280, height: 280, objectFit: 'cover'}} />
-            <div>
-              <b>{prod.name}</b> - R$ {(prod.price).toFixed(2).replace('.', ',')}
-            </div>
-            <div>{prod.description}</div>
-            <button onClick={() => addToCart(prod.id)}>Adicionar ao carrinho</button>
-          </li>
-        ))}
-      </ul>
+      <div className="max-w-5xl mx-auto py-8">
+        <h2 className="text-2xl font-bold mb-6">Produtos</h2>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {products.map(prod => (
+            <li key={prod.id} className="bg-white rounded shadow p-4 flex flex-col items-center">
+              <img
+                src={prod.image_url}
+                alt={prod.name}
+                className="w-48 h-48 object-cover rounded mb-4"
+              />
+              <div className="font-semibold text-lg mb-1">{prod.name}</div>
+              <div className="text-blue-700 font-bold mb-2">
+                R$ {(prod.price).toFixed(2).replace('.', ',')}
+              </div>
+              <div className="text-gray-600 mb-4 text-center">{prod.description}</div>
+              <button
+                onClick={() => addToCart(prod.id)}
+                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
+              >
+                Adicionar ao carrinho
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
