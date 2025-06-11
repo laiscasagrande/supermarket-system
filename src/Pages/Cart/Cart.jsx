@@ -68,30 +68,79 @@ export default function Cart() {
   );
 
     return (
-    <div>
-        <h2>Seu Carrinho</h2>
-        {cartItems.length === 0 ? (
-        <p>Você ainda não tem nada no carrinho, adicione algo primeiro.</p>
-        ) : (
-        <>
-            <ul>
-            {cartItems.map(item => (
-                <li key={item.id}>
-                <img src={item.products?.image_url} alt={item.products?.name} style={{width: 250, height: 250, objectFit: 'cover'}} />
-                {item.products?.name} - R$ {item.products?.price}
-                <div>
-                    <button onClick={() => decreaseQuantity(item)}>-</button>
-                    {item.quantity || 1}
-                    <button onClick={() => increaseQuantity(item)}>+</button>
-                </div>
-                </li>
-            ))}
-            </ul>
-            <h3>Total: R$ {total.toFixed(2)}</h3>
-            <button onClick={checkoutItems}>Finalizar compra</button>
-        </>
-        )}
-        <button onClick={navigateHome}>Voltar</button>
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center py-8">
+        <div className="w-full max-w-3xl bg-white rounded shadow p-6">
+            <h2 className="text-2xl font-bold mb-6 text-center">Seu Carrinho</h2>
+            {cartItems.length === 0 ? (
+                <p className="text-center text-gray-600 mb-6">
+                    Você ainda não tem nada no carrinho, adicione algo primeiro.
+                </p>
+            ) : (
+                <>
+                    <ul className="space-y-6 mb-6">
+                        {cartItems.map(item => (
+                            <li key={item.id} className="flex flex-col sm:flex-row items-center gap-4 border-b pb-4">
+                                <img
+                                    src={item.products?.image_url}
+                                    alt={item.products?.name}
+                                    className="w-32 h-32 object-cover rounded shadow"
+                                />
+                                
+                                <div className="flex-1 flex flex-col items-center sm:items-start">
+                                    <button class=" end-4 top-4 text-gray-600 transition hover:scale-110">
+                                        <span class="sr-only">Close cart</span>
+
+                                        <svg
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          fill="none"
+                                          viewBox="0 0 24 24"
+                                          stroke-width="1.5"
+                                          stroke="currentColor"
+                                          class="size-5"
+                                        >
+                                          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                      </button>
+                                    <div className="font-semibold text-lg">{item.products?.name}</div>
+                                    <div className="text-blue-700 font-bold mb-2">
+                                        R$ {(item.products?.price || 0).toFixed(2).replace('.', ',')}
+                                    </div>
+                                     
+                                    <div className="flex items-center gap-2 mt-2">
+                                        <button
+                                            onClick={() => decreaseQuantity(item)}
+                                            className="bg-gray-200 px-3 py-1 rounded hover:bg-gray-300 text-lg font-bold"
+                                        >-</button>
+                                        <span className="mx-2 text-lg">{item.quantity || 1}</span>
+                                        <button
+                                            onClick={() => increaseQuantity(item)}
+                                            className="bg-gray-200 px-3 py-1 rounded hover:bg-gray-300 text-lg font-bold"
+                                        >+</button>
+
+                                    </div>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                    <div className="flex justify-between items-center mb-6">
+                        <h3 className="text-xl font-bold">Total:</h3>
+                        <span className="text-xl font-bold text-green-600">R$ {total.toFixed(2).replace('.', ',')}</span>
+                    </div>
+                    <button
+                        onClick={checkoutItems}
+                        className="w-full bg-green-500 text-white py-2 rounded font-semibold hover:bg-green-600 transition mb-4"
+                    >
+                        Finalizar compra
+                    </button>
+                </>
+            )}
+            <button
+                onClick={navigateHome}
+                className="w-full bg-blue-500 text-white py-2 rounded font-semibold hover:bg-blue-600 transition"
+            >
+                Voltar
+            </button>
+        </div>
     </div>
     );
 }
