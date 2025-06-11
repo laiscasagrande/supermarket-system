@@ -7,6 +7,7 @@ const Home = () => {
   const [userId, setUserId] = useState(null);
   const [userName, setUserName] = useState('');
   const navigate = useNavigate();
+  const registerProduct = useNavigate();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -71,6 +72,10 @@ const Home = () => {
     navigate('/cart');
   };
 
+  const navigateToRegisterProduct = () => {
+    registerProduct('/createitem')
+  }
+
   return (
     <div>
       <div>
@@ -79,6 +84,7 @@ const Home = () => {
             Bem vindo de volta, <b>{userName}</b>
             <button onClick={handleLogout}>Sair</button>
             <button onClick={navigateCart}>Carrinho</button>
+            <button onClick={navigateToRegisterProduct}>Cadastro de produto</button>
           </>
         ) : (
           <>

@@ -5,6 +5,7 @@ import Cart from './Pages/Cart/Cart';
 import CreateItem from './Pages/CreateItem/CreateItem';
 import Login from './Pages/Login/Login';
 import Home from './Pages/Home/Home';
+import './App.css';
 
 const App = () => {
 
