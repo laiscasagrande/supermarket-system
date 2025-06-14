@@ -3,12 +3,14 @@ import { supabase } from '../../supabase-client';
 import { useForm } from "react-hook-form";
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useNavigate } from 'react-router-dom';
 
 const CreateItem = () => {
     const [itemName, setItemName] = React.useState("");
     const [itemPrice, setItemPrice] = React.useState("");
     const [itemDescription, setItemDescription] = React.useState("");
     const [itemImage, setItemImage] = React.useState("");
+    const navigate = useNavigate();
 
     const registerProductSchema = z.object({
         itemName: z.string().min(1, 'O nome do produto é obrigatório'),
@@ -89,8 +91,14 @@ const CreateItem = () => {
                     {...register('itemImage')}
                     onChange={(e) => setItemImage(e.target.value)}
                 />
-                <button type="submit" className="w-[10rem] rounded-md bg-sky-500 p-2 flex justify-center mt-5 text-white">
+                <button type="submit" className="w-[10rem] rounded-md bg-sky-500 p-2 flex justify-center mt-5 text-white hover:bg-blue-600 transition">
                     Adicionar Produto
+                </button>
+                <button
+                    className="w-[10rem] rounded-md bg-sky-500 p-2 flex justify-center mt-5 text-white hover:bg-blue-600 transition"
+                    onClick={() => navigate('/home')}
+                >
+                    Voltar
                 </button>
             </form>
         </main>

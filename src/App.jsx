@@ -6,6 +6,7 @@ import CreateItem from './Pages/CreateItem/CreateItem';
 import Login from './Pages/Login/Login';
 import Home from './Pages/Home/Home';
 import './App.css';
+import EditProducts from './Pages/EditProducts/EditProducts';
 
 const App = () => {
 
@@ -30,6 +31,7 @@ const App = () => {
         <Route path={'/home'} element={ <Home token={token} /> } />   
         <Route path={'/cart'} element={ <Cart/> } />
         <Route path={'/createitem'} element={ <CreateItem /> } />
+        <Route path={'/edititem'} element={ <EditProducts /> } />
       </Routes>
     </div>
   )
