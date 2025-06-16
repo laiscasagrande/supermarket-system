@@ -7,6 +7,7 @@ const Home = () => {
   const [userId, setUserId] = useState(null);
   const [userName, setUserName] = useState('');
   const navigate = useNavigate();
+  const registerProduct = useNavigate();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -71,27 +72,20 @@ const Home = () => {
     navigate('/cart');
   };
 
+  const navigateToRegisterProduct = () => {
+    registerProduct('/createitem')
+  }
+
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="flex justify-between items-center p-4 bg-white shadow">
         {userId ? (
-          <div className="flex items-center gap-4">
-            <span>
-              Bem vindo de volta, <b>{userName}</b>
-            </span>
-            <button
-              onClick={handleLogout}
-              className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition"
-            >
-              Sair
-            </button>
-            <button
-              onClick={navigateCart}
-              className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition"
-            >
-              Carrinho
-            </button>
-          </div>
+          <>
+            Bem vindo de volta, <b>{userName}</b>
+            <button onClick={handleLogout}>Sair</button>
+            <button onClick={navigateCart}>Carrinho</button>
+            <button onClick={navigateToRegisterProduct}>Cadastro de produto</button>
+          </>
         ) : (
           <div className="flex gap-2">
             <button
