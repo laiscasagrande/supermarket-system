@@ -7,6 +7,7 @@ export default function Carrinho() {
   const [itensCarrinho, setItensCarrinho] = useState([]);
   const [usuarioId, setUsuarioId] = useState(null);
   const [parcelas, setParcelas] = useState(1);
+  const [metodoPagamento, setMetodoPagamento] = useState('pix'); // Novo estado
   const navegar = useNavigate();
 
   useEffect(() => {
@@ -36,7 +37,7 @@ export default function Carrinho() {
   const confirmarCompra = async () => {
     await supabase.from('cart').delete().eq('user_id', usuarioId);
     setItensCarrinho([]);
-    toast.success(`Compra confirmada em ${parcelas}x de R$ ${calcularParcela()} sem juros!`);
+    toast.success(`Compra confirmada via ${metodoPagamento.toUpperCase()} em ${parcelas}x de R$ ${calcularParcela()} sem juros!`);
     navegar('/home');
   };
 
@@ -80,6 +81,18 @@ export default function Carrinho() {
               {Array.from({ length: 12 }, (_, i) => i + 1).map(numero => (
                 <option key={numero} value={numero}>{numero}x</option>
               ))}
+            </select>
+          </div>
+
+          <div className="flex justify-center mt-4 items-center gap-2">
+            <label className="font-medium">Método de pagamento:</label>
+            <select
+              value={metodoPagamento}
+              onChange={(e) => setMetodoPagamento(e.target.value)}
+              className="border rounded px-2 py-1"
+            >
+              <option value="pix">PIX</option>
+              <option value="cartao">Cartão</option>
             </select>
           </div>
 
