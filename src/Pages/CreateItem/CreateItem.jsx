@@ -21,7 +21,6 @@ const CreateItem = () => {
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors },
     } = useForm({
         resolver: zodResolver(registerProductSchema)
