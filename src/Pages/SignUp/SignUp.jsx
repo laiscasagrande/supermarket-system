@@ -1,6 +1,7 @@
 import React from 'react'
 import { supabase } from '../../supabase-client';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -39,14 +40,14 @@ const SignUp = () => {
                 }
             });
             if (error) {
-                alert(error.message);
+                toast.error(error.message);
                 return;
             } else {
-                alert('Usuário registrado com sucesso!');
+                toast.success('Usuário registrado com sucesso!');
                 navigate('/home');
             }
         } catch (error) {
-            alert(error);
+            toast.error(error);
         }
     }
 

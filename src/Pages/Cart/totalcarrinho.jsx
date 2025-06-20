@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../../supabase-client';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function Carrinho() {
   const [itensCarrinho, setItensCarrinho] = useState([]);
@@ -35,7 +36,7 @@ export default function Carrinho() {
   const confirmarCompra = async () => {
     await supabase.from('cart').delete().eq('user_id', usuarioId);
     setItensCarrinho([]);
-    alert(`Compra confirmada em ${parcelas}x de R$ ${calcularParcela()} sem juros!`);
+    toast.success(`Compra confirmada em ${parcelas}x de R$ ${calcularParcela()} sem juros!`);
     navegar('/home');
   };
 

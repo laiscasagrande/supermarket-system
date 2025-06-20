@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../../supabase-client';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const EditProducts = () => {
   const [products, setProducts] = useState([]);
@@ -54,9 +55,11 @@ const EditProducts = () => {
       .eq('id', id);
     if (error) {
       setError('Erro ao salvar alterações');
+      toast.error('Erro ao salvar alterações!');
     } else {
       setEditingId(null);
       fetchProducts();
+      toast.success('Produto atualizado com sucesso!');
     }
   };
 
@@ -66,8 +69,10 @@ const EditProducts = () => {
     const { error } = await supabase.from('products').delete().eq('id', id);
     if (error) {
       setError('Erro ao excluir produto');
+      toast.error('Erro ao excluir produto!');
     } else {
       fetchProducts();
+      toast.success('Produto excluído com sucesso!');
     }
   };
 

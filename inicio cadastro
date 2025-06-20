@@ -16,7 +16,6 @@ function App() {
       estoque: quantidadeEstoque
     };
 
-    alert('Produto cadastrado com sucesso!');
     console.log('Produto cadastrado:', produto);
 
    

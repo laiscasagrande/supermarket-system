@@ -7,6 +7,7 @@ import Login from './Pages/Login/Login';
 import Home from './Pages/Home/Home';
 import './App.css';
 import EditProducts from './Pages/EditProducts/EditProducts';
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
 
@@ -33,6 +34,7 @@ const App = () => {
         <Route path={'/createitem'} element={ <CreateItem /> } />
         <Route path={'/edititem'} element={ <EditProducts /> } />
       </Routes>
+       <ToastContainer />
     </div>
   )
 }

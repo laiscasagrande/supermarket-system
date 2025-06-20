@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const CreateItem = () => {
     const [itemName, setItemName] = React.useState("");
@@ -36,13 +37,13 @@ const CreateItem = () => {
         };
         const { error } = await supabase.from('products').insert([newProduct]);
         if (error) {
-            alert('Erro ao adicionar produto: ' + error.message);
+            toast.error('Erro ao adicionar produto: ' + error.message);
         } else {
             setItemName("");
             setItemPrice("");
             setItemDescription("");
             setItemImage("");
-            alert('Produto cadastrado!');
+            toast.success('Produto adicionado com sucesso!');
         }
     }
 
