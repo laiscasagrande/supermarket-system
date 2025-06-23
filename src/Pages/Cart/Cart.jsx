@@ -67,80 +67,87 @@ export default function Cart() {
     0
   );
 
-    return (
+  return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-8">
-        <div className="w-full max-w-3xl bg-white rounded shadow p-6">
-            <h2 className="text-2xl font-bold mb-6 text-center">Seu Carrinho</h2>
-            {cartItems.length === 0 ? (
-                <p className="text-center text-gray-600 mb-6">
-                    Você ainda não tem nada no carrinho, adicione algo primeiro.
-                </p>
-            ) : (
-                <>
-                    <ul className="space-y-6 mb-6">
-                        {cartItems.map(item => (
-                            <li key={item.id} className="flex flex-col sm:flex-row items-center gap-4 border-b pb-4">
-                                <img
-                                    src={item.products?.image_url}
-                                    alt={item.products?.name}
-                                    className="w-32 h-32 object-cover rounded shadow"
-                                />
-                                
-                                <div className="flex-1 flex flex-col items-center sm:items-start">
-                                    <button class=" end-4 top-4 text-gray-600 transition hover:scale-110">
-                                        <span class="sr-only">Close cart</span>
-
-                                        <svg
-                                          xmlns="http://www.w3.org/2000/svg"
-                                          fill="none"
-                                          viewBox="0 0 24 24"
-                                          stroke-width="1.5"
-                                          stroke="currentColor"
-                                          class="size-5"
-                                        >
-                                          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
-                                      </button>
-                                    <div className="font-semibold text-lg">{item.products?.name}</div>
-                                    <div className="text-blue-700 font-bold mb-2">
-                                        R$ {(item.products?.price || 0).toFixed(2).replace('.', ',')}
-                                    </div>
-                                     
-                                    <div className="flex items-center gap-2 mt-2">
-                                        <button
-                                            onClick={() => decreaseQuantity(item)}
-                                            className="bg-gray-200 px-3 py-1 rounded hover:bg-gray-300 text-lg font-bold"
-                                        >-</button>
-                                        <span className="mx-2 text-lg">{item.quantity || 1}</span>
-                                        <button
-                                            onClick={() => increaseQuantity(item)}
-                                            className="bg-gray-200 px-3 py-1 rounded hover:bg-gray-300 text-lg font-bold"
-                                        >+</button>
-
-                                    </div>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
-                    <div className="flex justify-between items-center mb-6">
-                        <h3 className="text-xl font-bold">Total:</h3>
-                        <span className="text-xl font-bold text-green-600">R$ {total.toFixed(2).replace('.', ',')}</span>
+      <div className="w-full max-w-3xl bg-white rounded shadow p-6">
+        <h2 className="text-2xl font-bold mb-6 text-center text-gray-900">Seu Carrinho</h2> {/* Texto do título para gray-900 */}
+        {cartItems.length === 0 ? (
+          <p className="text-center text-gray-600 mb-6">
+            Você ainda não tem nada no carrinho, adicione algo primeiro.
+          </p>
+        ) : (
+          <>
+            <ul className="space-y-6 mb-6">
+              {cartItems.map(item => (
+                <li key={item.id} className="flex flex-col sm:flex-row items-center gap-4 border-b pb-4">
+                  <img
+                    src={item.products?.image_url}
+                    alt={item.products?.name}
+                    className="w-32 h-32 object-cover rounded shadow"
+                  />
+                  
+                  <div className="flex-1 flex flex-col items-center sm:items-start">
+                    <div className="flex items-center justify-between w-full">
+                      <div className="font-semibold text-lg text-gray-900">
+                        {item.products?.name}
+                      </div> 
+                      <div className="flex items-center gap-2 mt-2">
+                        <button onClick={() => decreaseQuantity({...item, quantity: 1})} className="end-4 top-4 text-gray-600 transition hover:scale-110"> 
+                          <span className="sr-only">Remover item</span>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth="1.5"
+                            stroke="currentColor"
+                            className="size-5"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                      </div>
                     </div>
-                    <button
-                        onClick={checkoutItems}
-                        className="w-full bg-green-500 text-white py-2 rounded font-semibold hover:bg-green-600 transition mb-4"
-                    >
-                        Finalizar compra
-                    </button>
-                </>
-            )}
+
+                      {/* Cor do nome do produto para gray-900 */}
+                    <div className="text-indigo-600 font-bold mb-2"> {/* Preço do produto para indigo-600 */}
+                      R$ {(item.products?.price || 0).toFixed(2).replace('.', ',')}
+                    </div>
+                      
+                    <div className="flex items-center gap-2 mt-2">
+                        {/* Botões de quantidade */}
+                        <button
+                            onClick={() => decreaseQuantity(item)}
+                            className="bg-gray-200 px-3 py-1 rounded hover:bg-gray-300 text-lg font-bold text-gray-800"
+                        >-</button>
+                        <span className="mx-2 text-lg text-gray-900">{item.quantity || 1}</span>
+                        <button
+                            onClick={() => increaseQuantity(item)}
+                            className="bg-gray-200 px-3 py-1 rounded hover:bg-gray-300 text-lg font-bold text-gray-800"
+                        >+</button>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-xl font-bold text-gray-900">Total:</h3> {/* Texto do total para gray-900 */}
+              <span className="text-xl font-bold text-indigo-600">R$ {total.toFixed(2).replace('.', ',')}</span> {/* Valor total para indigo-600 */}
+            </div>
             <button
-                onClick={navigateHome}
-                className="w-full bg-blue-500 text-white py-2 rounded font-semibold hover:bg-blue-600 transition"
+              onClick={checkoutItems}
+              className="w-full bg-indigo-600 text-white py-2 rounded font-semibold hover:bg-indigo-500 transition mb-4" // Cor principal do botão para indigo-600
             >
-                Voltar
+              Finalizar compra
             </button>
-        </div>
+          </>
+        )}
+        <button
+          onClick={navigateHome}
+          className="w-full bg-gray-200 text-gray-800 py-2 rounded font-semibold hover:bg-gray-300 transition" // Cor do botão de voltar para cinza com texto escuro
+        >
+          Continuar Comprando
+        </button>
+      </div>
     </div>
-    );
+  );
 }

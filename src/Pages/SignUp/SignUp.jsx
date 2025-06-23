@@ -60,11 +60,13 @@ const SignUp = () => {
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                 <form onSubmit={handleSubmit} className="space-y-3" >
                     <div>
-                        <label
-                            htmlFor="nome"
-                            className="block text-sm/6 font-medium text-gray-900">
-                            Nome
-                        </label>
+                        <div className="flex items-center justify-between">
+                            <label
+                                htmlFor="nome"
+                                className="block text-sm/6 font-medium text-gray-900">
+                                Nome
+                            </label>
+                        </div>
                         <div className="mt-2">
                             <input
                                 id="nome"
@@ -76,11 +78,13 @@ const SignUp = () => {
                         </div>
                     </div>
                     <div>
-                        <label
-                        htmlFor="email"
-                        className="block text-sm/6 font-medium text-gray-900">
-                        Email
-                        </label>
+                        <div className="flex items-center justify-between">
+                            <label
+                            htmlFor="email"
+                            className="block text-sm/6 font-medium text-gray-900">
+                            Email
+                            </label>
+                        </div>
                         <div className="mt-2">
                         <input
                             id="email"
