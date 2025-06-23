@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../../supabase-client';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function Cart() {
   const [cartItems, setCartItems] = useState([]);
@@ -25,7 +26,7 @@ export default function Cart() {
     if (!userId) return;
     await supabase.from('cart').delete().eq('user_id', userId);
     setCartItems([]);
-    alert('Compra finalizada!');
+    toast.success('Compra finalizada!');
     navigate('/home');
   };
 

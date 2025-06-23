@@ -1,6 +1,7 @@
 import React from "react";
 import { supabase } from '../../supabase-client';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 // import "./Login.css";
 
 const Login = ({ setToken }) => {
@@ -24,14 +25,14 @@ const Login = ({ setToken }) => {
         password: senha,
       });
       if (error) {
-        alert(error.message);
+        toast.error(error.message);
         return;
       } else {
         if (setToken) setToken(data);
         navigate('/home');
       }
     } catch (error) {
-      alert(error);
+      toast.error(error);
     }
   };
 

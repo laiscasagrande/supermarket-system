@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { supabase } from '../../supabase-client';
 import { useNavigate } from 'react-router-dom';
 import { FaShoppingCart, FaSignOutAlt, FaEdit, FaMoon } from "react-icons/fa";
+import { toast } from 'react-toastify';
 
 const DESCRIPTION_LIMIT = 100;
 
@@ -66,18 +67,18 @@ const Home = () => {
         .update({ quantity: data.quantity + 1 })
         .eq('id', data.id);
       if (updateError) {
-        alert('Erro ao atualizar quantidade: ' + updateError.message);
+        toast.error('Erro ao atualizar quantidade: ' + updateError.message);
       } else {
-        alert('Quantidade aumentada no carrinho!');
+        toast.success('Quantidade aumentada no carrinho!');
       }
     } else {
       const { error: insertError } = await supabase
         .from('cart')
         .insert([{ product_id: productId, user_id: userId, quantity: 1 }]);
       if (insertError) {
-        alert('Erro ao adicionar ao carrinho: ' + insertError.message);
+        toast.error('Erro ao adicionar ao carrinho: ' + insertError.message);
       } else {
-        alert('Adicionado ao carrinho!');
+        toast.success('Adicionado ao carrinho!');
       }
     }
   };
