@@ -11,9 +11,17 @@ const Header = ({
 }) => {
   const navigate = useNavigate();
 
+  React.useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
+  }, [darkMode]);
+
   return (
     <div
-      className="flex flex-wrap items-center justify-between p-4 bg-white shadow dark:bg-gray-800 dark:text-white"
+      className={`flex flex-wrap items-center justify-between p-4 shadow ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}
       style={{ minHeight: 70 }}
     >
       <div className="flex-1 flex items-center min-w-[180px]">
