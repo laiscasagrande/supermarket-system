@@ -29,6 +29,7 @@ const Home = () => {
 
   const addToCart = async (productId) => {
     if (!userId) {
+      toast.error('Você precisa se cadastrar primeiro');
       return;
     }
     const { data } = await supabase
