@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { supabase } from '../supabase-client';
 import Header from './Header';
+import { useNavigate } from 'react-router-dom';
 
 const getInitialDarkMode = () => {
   const saved = localStorage.getItem('darkMode');
@@ -13,6 +14,7 @@ const MainLayout = () => {
   const [userId, setUserId] = useState(null);
   const [userName, setUserName] = useState('');
   const [darkMode, setDarkMode] = useState(getInitialDarkMode);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -40,6 +42,7 @@ const MainLayout = () => {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
+    navigate('/');
     window.location.reload();
   };
 

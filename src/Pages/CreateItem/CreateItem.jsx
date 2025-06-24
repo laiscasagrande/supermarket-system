@@ -48,61 +48,71 @@ const CreateItem = () => {
     }
 
     return (
-        <main>
-            <section className="flex items-start flex-col p-5 gap-2">
-                <h1 className="text-blue-700 font-bold text-3xl">Cadastro de produto</h1>
-                <h2 className="">Cadastro de produtos a serem disponibilizados para compra</h2>
-            </section>
-            <form className="flex flex-col items-start p-5" onSubmit={handleSubmit(addProduct)}>
-                <article className="flex gap-5">
-                    <div className="flex flex-col items-start">
-                        <input
-                            className="w-[20rem] p-2 rounded-md border-2 border-sky-500 focus:outline-none"
-                            type='text'
-                            placeholder='Nome do produto...'
-                            {...register('itemName')}
-                            onChange={(e) => setItemName(e.target.value)}
-                        />
-                        {errors.itemName && <span className="text-red-500">{errors.itemName.message}</span>}
-                    </div>
-                    <div className="flex flex-col">
-                        <input
-                            className="w-[10rem] p-2 rounded-md border-2 border-sky-500 focus:outline-none"
-                            type='text'
-                            placeholder='Preço (ex: 10,99)'
-                            {...register('itemPrice')}
-                            onChange={(e) => setItemPrice(e.target.value)}
-                        />
-                        {errors.itemPrice && <span className="text-red-500">{errors.itemPrice.message}</span>}
-                    </div>
-                </article>
-                <textarea
-                    className="w-[31.3rem] p-2 rounded-md border-2 border-sky-500 mt-5 focus:outline-none"
-                    type='text'
-                    placeholder='Descrição'
-                    {...register('itemDescription')}
-                    onChange={(e) => setItemDescription(e.target.value)}
-                />
-                {errors.itemDescription && <span className="text-red-500">{errors.itemDescription.message}</span>}
-                <input
-                    className="w-[15rem] p-2 rounded-md border-2 border-sky-500 mt-5 focus:outline-none"
-                    type='text'
-                    placeholder='Link da imagem'
-                    {...register('itemImage')}
-                    onChange={(e) => setItemImage(e.target.value)}
-                />
-                <button type="submit" className="w-[10rem] rounded-md bg-sky-500 p-2 flex justify-center mt-5 text-white hover:bg-blue-600 transition">
-                    Adicionar Produto
-                </button>
+        <div className="max-w-3xl mx-auto py-8">
+            <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold">Cadastro de produto</h2>
                 <button
-                    className="w-[10rem] rounded-md bg-sky-500 p-2 flex justify-center mt-5 text-white hover:bg-blue-600 transition"
+                    className="flex items-center gap-2 bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition font-semibold"
                     onClick={() => navigate('/home')}
                 >
                     Voltar
                 </button>
-            </form>
-        </main>
+            </div>
+            <div className="rounded shadow p-6">
+                <h3 className="text-lg font-semibold mb-2">Cadastro de produtos a serem disponibilizados para compra</h3>
+                <form className="flex flex-col gap-4" onSubmit={handleSubmit(addProduct)}>
+                    <div className="flex flex-col sm:flex-row gap-4">
+                        <div className="flex flex-col flex-1">
+                            <input
+                                className="w-full p-2 rounded-md border-2 border-sky-500 focus:outline-none placeholder-gray-400"
+                                type='text'
+                                placeholder='Nome do produto...'
+                                {...register('itemName')}
+                                value={itemName}
+                                onChange={(e) => setItemName(e.target.value)}
+                            />
+                            {errors.itemName && <span className="text-red-500">{errors.itemName.message}</span>}
+                        </div>
+                        <div className="flex flex-col w-full sm:w-40">
+                            <input
+                                className="w-full p-2 rounded-md border-2 border-sky-500 focus:outline-none placeholder-gray-400"
+                                type='text'
+                                placeholder='Preço (ex: 10,99)'
+                                {...register('itemPrice')}
+                                value={itemPrice}
+                                onChange={(e) => setItemPrice(e.target.value)}
+                            />
+                            {errors.itemPrice && <span className="text-red-500">{errors.itemPrice.message}</span>}
+                        </div>
+                    </div>
+                    <textarea
+                        className="w-full p-2 rounded-md border-2 border-sky-500 focus:outline-none placeholder-gray-400"
+                        placeholder='Descrição'
+                        {...register('itemDescription')}
+                        value={itemDescription}
+                        onChange={(e) => setItemDescription(e.target.value)}
+                    />
+                    {errors.itemDescription && <span className="text-red-500">{errors.itemDescription.message}</span>}
+                    <input
+                        className="w-full p-2 rounded-md border-2 border-sky-500 focus:outline-none placeholder-gray-400"
+                        type='text'
+                        placeholder='Link da imagem'
+                        {...register('itemImage')}
+                        value={itemImage}
+                        onChange={(e) => setItemImage(e.target.value)}
+                    />
+                    <div className="flex flex-col sm:flex-row gap-4 mt-4">
+                        <button
+                            type="submit"
+                            className="w-full sm:w-40 rounded-md bg-green-500 p-2 flex justify-center text-white hover:bg-green-600 transition font-semibold"
+                        >
+                            Adicionar Produto
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     )
 }
 
-export default CreateItem
+export default CreateItem;
