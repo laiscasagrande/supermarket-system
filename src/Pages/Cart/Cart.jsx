@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../../supabase-client';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
 export default function Cart() {
   const [cartItems, setCartItems] = useState([]);
-  const [userId, setUserId] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCart = async () => {
       const { data: userData } = await supabase.auth.getUser();
       if (!userData?.user) return;
-      setUserId(userData.user.id);
       const { data } = await supabase
         .from('cart')
         .select('id, product_id, quantity, products(name, price, image_url)')
@@ -23,11 +20,7 @@ export default function Cart() {
   }, []);
 
   const checkoutItems = async () => {
-    if (!userId) return;
-    await supabase.from('cart').delete().eq('user_id', userId);
-    setCartItems([]);
-    toast.success('Compra finalizada!');
-    navigate('/home');
+    navigate('/checkout');
   };
 
   const navigateHome = () => {
