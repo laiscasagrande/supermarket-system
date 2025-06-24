@@ -3,7 +3,7 @@ import { supabase } from '../../supabase-client';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-export default function Carrinho() {
+export default function Checkout() {
   const [itensCarrinho, setItensCarrinho] = useState([]);
   const [usuarioId, setUsuarioId] = useState(null);
   const [parcelas, setParcelas] = useState(1);
