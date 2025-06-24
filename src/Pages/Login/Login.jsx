@@ -2,7 +2,6 @@ import React from "react";
 import { supabase } from '../../supabase-client';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-// import "./Login.css";
 
 const Login = ({ setToken }) => {
   const [email, setEmail] = React.useState("");
